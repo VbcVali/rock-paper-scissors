@@ -8,10 +8,10 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     while (true) {
-        let choice = prompt("Rcok, Paper, Scissors ?").toLowerCase();
+        let choice = prompt("Rock, Paper, Scissors ?").toLowerCase();
         if (OPTIONS.includes(choice) === true) {
             return choice;
-    }
+        }
     }
 }
 
@@ -60,7 +60,24 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+function playGame() {
+    // Instead of moving playRound inside, i call it 5 times with a for loop
+    // Hardcoded 5 to match the assignment requirements
+    for (let i = 0; i < 5; i++) {
+        playRound(getComputerChoice(), getHumanChoice());
+    }
 
-console.log(playRound(humanSelection, computerSelection));
+    if (humanScore === computerScore) {
+        return "Tie!";
+    }
+
+    else if (humanScore > computerScore) {
+        return "You win!";
+    }
+
+    else {
+        return "You lose!";
+    }
+}
+
+console.log(playGame());
