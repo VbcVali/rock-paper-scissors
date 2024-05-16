@@ -2,3 +2,20 @@ h1 {
     background-color: blue;
     text-align: center
 }
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.options > button {
+    border-radius: 5px;
+    color: black;
+    background-color: red;
+}
+
+button:hover {
+    background-color: green;
+}

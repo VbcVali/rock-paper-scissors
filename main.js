@@ -60,24 +60,66 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    // Instead of moving playRound inside, i call it 5 times with a for loop
-    // Hardcoded 5 to match the assignment requirements
-    for (let i = 0; i < 5; i++) {
-        playRound(getComputerChoice(), getHumanChoice());
-    }
+//function playGame() {
+//    // Instead of moving playRound inside, i call it 5 times with a for loop
+//    // Hardcoded 5 to match the assignment requirements
+//    for (let i = 0; i < 5; i++) {
+//        playRound(getComputerChoice(), getHumanChoice());
+//    }
+//
+//    if (humanScore === computerScore) {
+//        return "Tie!";
+//    }
+//
+//    else if (humanScore > computerScore) {
+//        return "You win!";
+//    }
+//
+//    else {
+//        return "You lose!";
+//    }
+//}
+//
+//console.log(playGame());
 
-    if (humanScore === computerScore) {
-        return "Tie!";
-    }
 
-    else if (humanScore > computerScore) {
-        return "You win!";
-    }
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
 
-    else {
-        return "You lose!";
-    }
-}
+const body = document.querySelector("body");
 
-console.log(playGame());
+const score = document.createElement("div");
+score.classList.add("score");
+score.textContent = "Score:";
+
+const playerScore = document.createElement("div");
+playerScore.classList.add("playerScore");
+score.appendChild(playerScore);
+
+const machineScore = document.createElement("div");
+machineScore.classList.add("machineScore");
+score.appendChild(machineScore);
+
+body.appendChild(score);
+
+rock.addEventListener("click", () => {
+    playRound("rock", getComputerChoice());
+    playerScore.textContent = `Human score: ${humanScore}`;
+    computerScore.textContent = `Computer score: ${computerScore}`;
+    //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
+});
+
+paper.addEventListener("click", () => {
+    playRound("paper", getComputerChoice());
+    playerScore.textContent = `Human score: ${humanScore}`;
+    machineScore.textContent = `Computer score: ${computerScore}`;
+    //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
+});
+
+scissors.addEventListener("click", () => {
+    playRound("scissors", getComputerChoice());
+    playerScore.textContent = `Human score: ${humanScore}`;
+    machineScore.textContent = `Computer score: ${computerScore}`;
+    //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
+})
