@@ -103,10 +103,24 @@ score.appendChild(machineScore);
 
 body.appendChild(score);
 
+function displayScore() {
+    if (humanScore === 5) {
+        return "You win!";
+    }
+    else if (computerScore === 5) {
+        return "You lose!";
+    }
+};
+
+const displayWinner = document.createElement("div");
+displayWinner.classList.add("displayWinner");
+score.appendChild(displayWinner);
+
 rock.addEventListener("click", () => {
     playRound("rock", getComputerChoice());
     playerScore.textContent = `Human score: ${humanScore}`;
     computerScore.textContent = `Computer score: ${computerScore}`;
+    displayWinner.textContent = displayScore();
     //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
 });
 
@@ -114,6 +128,7 @@ paper.addEventListener("click", () => {
     playRound("paper", getComputerChoice());
     playerScore.textContent = `Human score: ${humanScore}`;
     machineScore.textContent = `Computer score: ${computerScore}`;
+    displayWinner.textContent = displayScore();
     //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
 });
 
@@ -121,5 +136,6 @@ scissors.addEventListener("click", () => {
     playRound("scissors", getComputerChoice());
     playerScore.textContent = `Human score: ${humanScore}`;
     machineScore.textContent = `Computer score: ${computerScore}`;
+    displayWinner.textContent = displayScore();
     //console.log(`Human score: ${humanScore} \n Computer scoe: ${computerScore}`);
 })
